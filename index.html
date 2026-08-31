@@ -23,33 +23,48 @@
 </div>
 
 	<section class="card">
-	  <h2>Step 1 — Send the request</h2>
-	  <img src="images/raw-json.png" alt="The dog.ceo response as one unbroken line of raw text">
-	  <img src="images/pretty-json.png" alt="The same response laid out on separate lines by the browser's JSON viewer">
-	  <p><strong>What I did:</strong> I sent a GET request to https://dog.ceo/api/breeds/image/random using Postman. <strong>What I saw:</strong> The response came back as a JSON object containing a random dog image URL and a status field confirming the request succeeded.</p>
-	  <pre><code>{
-	  "message": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_3609.jpg",
-	  "status": "success"
+		<h2>Step 1 — Send the request</h2>
+		<img src="images/raw-json.png" alt="The dog.ceo response as one unbroken line of raw text">
+		<img src="images/pretty-json.png" alt="The same response laid out on separate lines by the browser's JSON viewer">
+		<p><strong>What I did:</strong> I sent a GET request to https://dog.ceo/api/breeds/image/random using Postman. <strong>What I saw:</strong> The response came back as a JSON object containing a random dog image URL and a status field confirming the request succeeded.</p>
+		<p><a href="https://dog.ceo/dog-api/" target="_blank" rel="noopener noreferrer">Dog CEO API documentation</a></p>
+		<pre><code>{
+		"message": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_3609.jpg",
+		"status": "success"
 		}</code></pre>
 	</section>
 	
 	<section class="card">
-	  <h2>Step 2 — Request three hounds</h2>
-	  <img src="images/three-hounds.png" alt="Screenshot of the result for 3 random hounds.">
-	  
-	  <p><strong>What I did:</strong> I entered https://dog.ceo/api/breed/hound/images/random/3 directly into my browser's address bar to request three random hound images at once. <strong>What I saw:</strong> The response returned a JSON object with a message field containing a list of three image URLs, instead of just one — showing how the API can return multiple results in a single request."</p>
-	  <pre><code>{
-	  {
-    "message": [
+		<h2>Step 2 — Request three hounds</h2>
+		<img src="images/three-hounds.png" alt="Screenshot of the result for 3 random hounds.">
+		<img src="images/4055.png" alt="hound1">
+		<img src="images/10051.png" alt="hound2">
+		<img src="images/13683.png" alt="hound3">
+		<p><strong>What I did:</strong> I entered https://dog.ceo/api/breed/hound/images/random/3 directly into my browser's address bar to request three random hound images at once. <strong>What I saw:</strong> The response returned a JSON object with a message field containing a list of three image URLs, instead of just one — showing how the API can return multiple results in a single request."</p>
+		<pre><code>{
+		{
+		"message": [
         "https://images.dog.ceo/breeds/hound-basset/n02088238_10051.jpg",
         "https://images.dog.ceo/breeds/hound-basset/n02088238_13683.jpg",
         "https://images.dog.ceo/breeds/hound-english/n02089973_4055.jpg"
-    ],
-    "status": "success"
-}
-}</code></pre>
-</section>
+		],
+		"status": "success"
+		}
+		}</code></pre>
+	</section>
 
+	<section class="card">
+		<h2>Reflection #1: When JSON breaks</h2>
+		<p>Today I learned what happens when a JSON field name is missing its quotes — the response stops being valid JSON and the browser refuses to parse it correctly. It was a good reminder that every property name inside an object needs to be wrapped in quotes, even though it's easy to forget when you're used to writing regular JavaScript objects. Seeing the broken response made the strict formatting rules of JSON click in a way that just reading about them hadn't.</p>
+	<pre><code>
+	// Broken — missing quotes around the property name
+		{
+		message: "https://images.dog.ceo/breeds/hound/example.jpg"
+		}
+	// Correct
+		{
+		"message": "https://images.dog.ceo/breeds/hound/example.jpg"
+		}</code></pre>
 </main>	
 </body>
 </html>
