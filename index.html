@@ -8,32 +8,36 @@
 <link rel="stylesheet" href="css/container.css">
 <link rel="stylesheet" href="css/card.css">
 <link rel="stylesheet" href="css/style.css">
-
-<title>Document</title>
+<link rel="stylesheet" href="css/hero.css">
+<title>Api Tutorial</title>
 </head>
 <body>
-<main>
-	<h1>Fetching Data from the Dog CEO API </h1>
+
 <main class="container">
-	<div class="card">
-	  <h3>What is the correct way to fetch a random dog image from the Dog CEO API?</h3>
-	  <p>Pick one. There's no penalty for guessing.</p>
+<div class="hero">
 	<section class="card">
-	  <h2>Step 1 — The URL is the request</h2>
+	<h1>Fetching Data from the Dog CEO API </h1>
+	  <!--<h3>What is the correct way to fetch a random dog image from the Dog CEO API?</h3>-->
+	  <p>Send a request, parse the JSON, and turn it into a random dog image on the page.</p>
+	</section>
+</div>
+
+	<section class="card">
+	  <h2>Step 1 — Send the request</h2>
 	  <img src="images/raw-json.png" alt="The dog.ceo response as one unbroken line of raw text">
 	  <img src="images/pretty-json.png" alt="The same response laid out on separate lines by the browser's JSON viewer">
-	  <p>What I did: … What I saw: …</p>
+	  <p><strong>What I did:</strong> I sent a GET request to https://dog.ceo/api/breeds/image/random using Postman. <strong>What I saw:</strong> The response came back as a JSON object containing a random dog image URL and a status field confirming the request succeeded.</p>
 	  <pre><code>{
-	  "message": "https://images.dog.ceo/breeds/hound-afghan/n02088094_2062.jpg",
+	  "message": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_3609.jpg",
 	  "status": "success"
 		}</code></pre>
 	</section>
 	
-	<section class="card2">
-	  <h2>Step 2 — The URL is the request</h2>
-	  <img src="3-random-hounds.png alt="Screenshot of the result for 3 random hounds.>
+	<section class="card">
+	  <h2>Step 2 — Request three hounds</h2>
+	  <img src="images/three-hounds.png" alt="Screenshot of the result for 3 random hounds.">
 	  
-	  <p>What I did: … What I saw: …</p>
+	  <p><strong>What I did:</strong> I entered https://dog.ceo/api/breed/hound/images/random/3 directly into my browser's address bar to request three random hound images at once. <strong>What I saw:</strong> The response returned a JSON object with a message field containing a list of three image URLs, instead of just one — showing how the API can return multiple results in a single request."</p>
 	  <pre><code>{
 	  {
     "message": [
@@ -46,7 +50,6 @@
 }</code></pre>
 </section>
 
-</div>
-</main>
+</main>	
 </body>
 </html>
