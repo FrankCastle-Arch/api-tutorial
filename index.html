@@ -65,6 +65,106 @@
 		{
 		"message": "https://images.dog.ceo/breeds/hound/example.jpg"
 		}</code></pre>
+	</section>	
+		
+	<section class="card">
+		<h2>A menu that arrived already laid out</h2>
+		<img src="images/postman-coffee-menu.png" alt="Postman showing a GET to the coffee shop menu address with a 200 status and a response body that is already indented">
+		<p><strong>What I did:</strong> I created a new request in Postman's api-tutorial collection, pasted in https://coffee-cart.app/list.json, and sent it with no key, parameters, or headers required. <strong>What I saw:</strong> The response returned a list of ten drinks, each with a name, price, and recipe array listing individual ingredients — and unlike previous responses, this one was already formatted on separate lines in the Raw view, so I pasted it exactly as received without indenting it by hand."</p>
+	 <pre><code>[
+    {
+        "name": "Espresso",
+        "price": 10,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 }
+        ]
+    },
+    {
+        "name": "Espresso Macchiato",
+        "price": 12,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "milk foam", "quantity": 15 }
+        ]
+    },
+    {
+        "name": "Cappuccino",
+        "price": 19,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "steamed milk", "quantity": 20 },
+            { "name": "milk foam", "quantity": 50 }
+        ]
+    },
+    {
+        "name": "Mocha",
+        "price": 8,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "chocolate syrup", "quantity": 20 },
+            { "name": "steamed milk", "quantity": 25 },
+            { "name": "whipped cream", "quantity": 25 }
+        ]
+    },
+    {
+        "name": "Flat White",
+        "price": 18,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "steamed milk", "quantity": 50 }
+        ]
+    },
+    {
+        "name": "Americano",
+        "price": 7,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "water", "quantity": 70 }
+        ]
+    },
+    {
+        "name": "Cafe Latte",
+        "price": 16,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "steamed milk", "quantity": 50 },
+            { "name": "milk foam", "quantity": 20 }
+        ]
+    },
+    {
+        "name": "Espresso Con Panna",
+        "price": 14,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "whipped cream", "quantity": 15 }
+        ]
+    },
+    {
+        "name": "Cafe Breve",
+        "price": 15,
+        "recipe": [
+            { "name": "espresso", "quantity": 25 },
+            { "name": "steamed milk", "quantity": 30 },
+            { "name": "steamed cream", "quantity": 30 },
+            { "name": "milk foam", "quantity": 15 }
+        ]
+    },
+    {
+        "name": "(Discounted) Mocha",
+        "price": 4,
+        "discounted": true,
+        "recipe": [
+            { "name": "espresso", "quantity": 30 },
+            { "name": "chocolate syrup", "quantity": 20 },
+            { "name": "steamed milk", "quantity": 25 },
+            { "name": "whipped cream", "quantity": 25 }
+        ]
+    }
+]
+
+]</code></pre>
+</section>
+
 </main>	
 </body>
 </html>
