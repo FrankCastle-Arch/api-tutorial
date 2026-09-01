@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/card.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/badge.css">
+<script src="scripts/describe.js" defer></script>
 <title>Api Tutorial</title>
 </head>
 <body>
@@ -22,6 +24,38 @@
 	</section>
 </div>
 
+<table>
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Parameters</th>
+      <th>Status</th>
+      <th>What Was Different</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>https://dog.ceo/api/breeds/image/random</td>
+      <td>none</td>
+      <td><span class="badge">200</span></td>
+      <td>Returned a single image URL</td>
+    </tr>
+    <tr>
+      <td>https://dog.ceo/api/breed/hound/images/random/3</td>
+      <td>/3 (count)</td>
+      <td><span class="badge">200</span></td>
+      <td>Returned a list of 3 image URLs</td>
+    </tr>
+    <tr>
+      <td>https://coffee-cart.app/list.json</td>
+      <td>none</td>
+      <td><span class="badge">200</span></td>
+      <td>No key/headers needed; response pre-formatted</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
 	<section class="card">
 		<h2>Step 1 — Send the request</h2>
 		<img src="images/raw-json.png" alt="The dog.ceo response as one unbroken line of raw text">
@@ -68,7 +102,7 @@
 	</section>	
 		
 	<section class="card">
-		<h2>A menu that arrived already laid out</h2>
+		<h2>Ten coffee drinks, each with a name, price, and recipe — served up with a single, no-frills request.</h2>
 		<img src="images/postman-coffee-menu.png" alt="Postman showing a GET to the coffee shop menu address with a 200 status and a response body that is already indented">
 		<p><strong>What I did:</strong> I created a new request in Postman's api-tutorial collection, pasted in https://coffee-cart.app/list.json, and sent it with no key, parameters, or headers required. <strong>What I saw:</strong> The response returned a list of ten drinks, each with a name, price, and recipe array listing individual ingredients — and unlike previous responses, this one was already formatted on separate lines in the Raw view, so I pasted it exactly as received without indenting it by hand."</p>
 	 <pre><code>[
@@ -164,6 +198,48 @@
 
 ]</code></pre>
 </section>
+
+<section class="card">
+		<h2>Reflection #2 Part #1: Parameters change the shape of the response</h2>
+		<p>Sending the same kind of request to two different endpoints today showed how much a small addition to a URL can change what comes back. A plain request returned a single object, but adding /3 to ask for multiple hound images turned the message field into a list instead of a single string. It made the connection between what you ask for and the structure of the response a lot more concrete.</p>
+	<pre><code>
+// Single request — no parameters
+	{
+	 "message": "https://images.dog.ceo/breeds/hound/example.jpg",
+	 "status": "success"
+	}
+
+// Same kind of request, with /3 added — "message" becomes a list
+	{
+	"message": [
+    "https://images.dog.ceo/breeds/hound/example1.jpg",
+    "https://images.dog.ceo/breeds/hound/example2.jpg",
+    "https://images.dog.ceo/breeds/hound/example3.jpg"
+	],
+	"status": "success"
+	}</code></pre>
+	</section>
+	
+<section class="card">
+		<h2>Reflection #2 Part #2: Not every API needs a key</h2>
+		<p>The coffee menu request was a good contrast to everything else today — no key, no headers, no setup, just a plain URL that answered immediately. Comparing it against the dog API's requests made it clearer that authentication and headers are a choice each API makes, not something every request needs by default.</p>
+	<pre><code>
+// Dog CEO API request — plain URL, no headers, no key
+GET https://dog.ceo/api/breeds/image/random
+
+// Coffee Cart API request — same simplicity
+GET https://coffee-cart.app/list.json
+
+// Both return a 200 with no authentication required
+	</code></pre>
+	</section>	
+
+<section class="card">
+	<h2>greet(name, breed)</h2>
+	<p>Calling the function with arguments in order, then swapped on purpose.</p>
+	<div id="greet-output"></div>
+</section>
+
 
 </main>	
 </body>
