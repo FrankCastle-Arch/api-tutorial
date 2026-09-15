@@ -10,14 +10,17 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/hero.css">
 <link rel="stylesheet" href="css/badge.css">
-<script src="scripts/describe.js" type="module"></script>
-<script src="data.js" type="module"></script>
-<a href="day-4.html">Day 4</a>
+<script src="day-3.js" type="module"></script>
+
 
 <title>Api Tutorial</title>
 </head>
 <body>
- 
+	<nav>
+		<a href="day-3.html">Day 3</a>
+		<a href="day-4.html">Day 4</a>
+	
+	</nav>	
 <main class="container">
 <div class="hero">
 	<section class="card">
@@ -79,7 +82,7 @@
 		<img src="images/13683.png" alt="hound3">
 		<p><strong>What I did:</strong> I entered https://dog.ceo/api/breed/hound/images/random/3 directly into my browser's address bar to request three random hound images at once. <strong>What I saw:</strong> The response returned a JSON object with a message field containing a list of three image URLs, instead of just one — showing how the API can return multiple results in a single request."</p>
 		<pre><code>{
-		{
+		
 		"message": [
         "https://images.dog.ceo/breeds/hound-basset/n02088238_10051.jpg",
         "https://images.dog.ceo/breeds/hound-basset/n02088238_13683.jpg",
@@ -197,7 +200,7 @@
             { "name": "whipped cream", "quantity": 25 }
         ]
     }
-]
+
 
 ]</code></pre>
 </section>
@@ -235,12 +238,53 @@ GET https://coffee-cart.app/list.json
 
 // Both return a 200 with no authentication required
 	</code></pre>
-	</section>	
+</section>
 
+<section class="card">
+	<h2>Console.log vs. Return — Two Different Jobs</h2>
+	<p>Today I learned that <code>console.log</code> and <code>return</code> look similar but do completely different things. <code>console.log</code> just prints a value to the console so I can see it — it doesn't hand anything back to the rest of the program. <code>return</code> actually sends a value out of the function as its <strong>return value</strong>, so that value can be stored in a variable, used in another calculation, or displayed on the page.</p>
+	<pre><code>function double(num) {
+	console.log(num * 2); // prints to console only
+}
 
+function doubleReturn(num) {
+	return num * 2; // sends the value back out
+}
 
-</article>
+let result = doubleReturn(5);
+console.log(result); // 10
 
+let brokenResult = double(5);
+console.log(brokenResult); // undefined — nothing was returned</code></pre>
+</section>
+
+<section class="card">
+  <h2>Variable Scope — Why Line Stays Local</h2>
+  <p>Today I learned that a variable declared inside a function, like <code>line</code> inside <code>weightLine</code>, only exists while that function is running — it's completely invisible everywhere else, including inside other functions like <code>summarize</code>. Meanwhile, <code>pets</code> is declared at the top level of the file, making it a global variable that every function can access. Trying to reference <code>line</code> outside of <code>weightLine</code> would throw a <code>ReferenceError</code>, since it never existed in that outer scope to begin with.</p>
+  <pre><code>function summarize(pet) {
+  return pet.name + " comes from " + pet.origin + ".";
+}
+
+function weightLine(pet) {
+  let line = pet.name + " weighs up to ";
+  line = line + pet.max_weight + " pounds.";
+  return line;
+}
+
+console.log(weightLine(pets[0])); // works fine — line exists inside this function
+
+console.log(line); // ReferenceError: line is not defined</code></pre>
+</section>
+
+<section class="card">
+  <h2>The Object Literal — JSON vs. JavaScript</h2>
+  <p>Today I noticed that the same cat record looks almost identical whether it's sitting in <code>data.json</code> or written directly as a JavaScript object literal in <code>data.js</code> — but the quotation marks aren't quite the same. In JSON, every property name has to be wrapped in double quotes, no exceptions. In a plain JavaScript object literal, those quotes around property names are optional, so <code>name:</code> works just as well as <code>"name":</code>.</p>
+  <pre><code>// The same record, in JSON (data.json)
+{ "name": "Abyssinian", "origin": "Ethiopia", "length": "12 to 16 inches", "playfulness": 5, "max_weight": 10 }
+
+// The same record, as a JavaScript object literal (data.js)
+{ name: "Abyssinian", origin: "Ethiopia", length: "12 to 16 inches", playfulness: 5, max_weight: 10 }</code></pre>
+</section>
 
 </main>	
 </body>
